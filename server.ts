@@ -4,6 +4,9 @@ import express from 'express';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import AppServerModule from './src/main.server';
+import * as pako from 'pako';
+import axios from 'axios';
+import { XMLParser } from 'fast-xml-parser';
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -24,6 +27,36 @@ export function app(): express.Express {
     maxAge: '1y',
     index: 'index.html',
   }));
+
+  server.get('/api/apps', async (req, res) => {
+    try {
+      const response = await axios.get(
+        'http://flatpak.elementary.io/repo/appstream/x86_64/appstream.xml.gz',
+        {
+          responseType: 'arraybuffer',
+        }
+      );
+
+      const decompressedData = pako.inflate(new Uint8Array(response.data), {
+        to: 'string',
+      });
+
+      const parser = new XMLParser();
+      const json = parser.parse(decompressedData, {
+        allowBooleanAttributes: true,
+      });
+
+      if (json) {
+        res.json(json);
+      } else {
+        res.status(500).send({ error: 'Error al procesar el archivo XML' });
+      }
+    } catch (error) {
+      res
+        .status(500)
+        .send({ error: 'Error al descargar o procesar el archivo' });
+    }
+  });
 
   // All regular routes use the Angular engine
   server.get('**', (req, res, next) => {

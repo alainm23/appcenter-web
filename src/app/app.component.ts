@@ -1,10 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { AppDataService } from './core/services/app-data.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'appcenter-web';
+  private appDataService: AppDataService = inject(AppDataService);
+  data: any;
+
+  test() {
+    this.appDataService.getAppList();
+  }
 }

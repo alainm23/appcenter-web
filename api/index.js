@@ -1,0 +1,1 @@
+export default import('../dist/appcenter-web/server/server.mjs').then(module => module.app());
