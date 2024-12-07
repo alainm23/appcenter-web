@@ -1,16 +1,20 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { AppDataService } from './core/services/app-data.service';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from './shared/components/header/header.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  standalone: true,
+  imports: [CommonModule, RouterOutlet, HeaderComponent],
 })
-export class AppComponent {
-  private appDataService: AppDataService = inject(AppDataService);
-  data: any;
+export class AppComponent implements OnInit {
+  private _appDataService: AppDataService = inject(AppDataService);
 
-  test() {
-    this.appDataService.getAppList();
+  ngOnInit(): void {
+    this._appDataService.getAppsData();
   }
 }

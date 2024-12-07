@@ -1,0 +1,20 @@
+<div
+  class="d-flex flex-row align-items-center p-3 c-pointer"
+  style="max-width: 400px; border: none"
+>
+  <div>
+    <img
+      [src]="
+        'https://flatpak.elementary.io/repo/appstream/x86_64/icons/64x64/' +
+        app.icon
+      "
+      class="rounded"
+      alt="Nimbus"
+    />
+  </div>
+
+  <div class="flex-grow-1 ms-3">
+    <h6 class="mb-0">{{ app.name["en"] }}</h6>
+    <small class="text-muted">{{ app.summary["en"] }}</small>
+  </div>
+</div>

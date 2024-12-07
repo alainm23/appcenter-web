@@ -1,0 +1,9 @@
+<div class="container my-4">
+  <div class="row">
+    @for (app of apps (); track app.id) {
+    <div class="col-12 col-md-4">
+      <app-app-card [app]="app"></app-app-card>
+    </div>
+    }
+  </div>
+</div>

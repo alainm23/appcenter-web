@@ -1,0 +1,10 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Asegúrate de que el header esté por encima de otros elementos */
+  background-color: #343a40; /* Fondo oscuro, ajusta según tu tema */
+  color: white; /* Texto blanco, ajusta según tu tema */
+  padding: 15px 0; /* Ajusta el padding como desees */
+}
