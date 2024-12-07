@@ -1,59 +1,43 @@
-# AppcenterWeb
+# AppCenter
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.2.
+**AppCenter** is an app store built with Angular, Bootstrap, and other modern technologies. It allows users to explore, search, and view available apps, as well as access the detailed view of each app.
 
-## Development server
+## Requirements
 
-To start a local development server, run:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Before you begin, make sure you have **Node.js version 18 or later** installed. You can check your Node.js version with the following command:
 
 ```bash
-ng generate component component-name
+node -v
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+If you need to install or upgrade Node.js, you can do so from the official Node.js website.
+
+## Installation
 
 ```bash
-ng generate --help
+npm install
 ```
 
-## Building
+This will install all the necessary dependencies for the project to run.
 
-To build the project run:
+## Generate Apps
+
+Before starting the project, you need to generate the apps using the npm run generate-flatpak script. This script will download and process the available apps for the store.
+
+To generate the apps, run:
 
 ```bash
-ng build
+npm run generate-flatpak
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+This step is essential to load the app data into the store.
 
-## Running unit tests
+## Run the Project
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Once the apps are generated, you can run the project locally with the following command:
 
 ```bash
-ng test
+npm run start
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+This command will start a local development server, typically accessible at http://localhost:4200
